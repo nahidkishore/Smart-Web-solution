@@ -7,6 +7,8 @@ import { createContext } from "react";
 import Login from "./components/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import AddService from "./components/Admin/AddService/AddService";
+import Review from "./components/Customer/Review/Review";
+import NotFound from "./components/NotFound/NotFound";
 
 export const UserContext = createContext();
 
@@ -29,8 +31,14 @@ function App() {
             <AddService></AddService> 
 
           </Route>
+          <Route path="/dashboard/reviews">
+            <Review></Review>
+          </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </Switch>
       </Router>
