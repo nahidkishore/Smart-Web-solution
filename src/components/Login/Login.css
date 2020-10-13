@@ -1,0 +1,13 @@
+.login-button{
+  
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 9px 10px;
+    cursor: pointer;
+    background-color: #72fa9b;
+}
+.style{
+  border: 1px solid gray;
+  height: 300px;
+  width: 600px;
+}
