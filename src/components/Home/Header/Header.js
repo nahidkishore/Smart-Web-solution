@@ -1,5 +1,5 @@
 import React from 'react';
-import Client from '../Client/Client';
+
 
 import HeaderMain from '../HeaderMain/HeaderMain';
 import Navbar from '../Navbar/Navbar';
@@ -9,7 +9,7 @@ const Header = () => {
     <div className="header-container mb-5">
       <Navbar></Navbar>
       <HeaderMain></HeaderMain>
-       <Client></Client>
+      
      
     </div>
   );
