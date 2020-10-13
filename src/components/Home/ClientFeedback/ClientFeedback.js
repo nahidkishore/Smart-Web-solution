@@ -32,7 +32,7 @@ const ClientFeedback = () => {
           <h2>Clients <span className="text-brand">Feedback</span></h2>
         </div>
 
-        <div className="card-deck mt-5 ">
+        <div className="card-deck mt-5 " style={{height:'100%'}}>
           {
             feedbackData.map(feedback=><FeedbackCard feedback={feedback}></FeedbackCard>)
           }
