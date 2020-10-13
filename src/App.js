@@ -25,10 +25,10 @@ function App() {
           <PrivateRoute path="/dashboard/order">
             <Order></Order>
           </PrivateRoute>
-          <PrivateRoute path="/dashboard/addService">
+          <Route path="/dashboard/addService">
             <AddService></AddService> 
 
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Login></Login>
           </Route>
