@@ -7,6 +7,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Order from './components/Customer/Order/Order';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
      </Route>
      <Route exact path="/">
        <Home></Home>
+     </Route>
+     <Route path="/dashboard/order">
+       <Order></Order>
      </Route>
    </Switch>
  </Router>

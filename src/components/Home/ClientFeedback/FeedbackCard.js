@@ -3,23 +3,22 @@ import "./ClientFeedback.css";
 
 const FeedbackCard = ({ feedback }) => {
   return (
-    <div className="card shadow-sm text-center">
-      <div className="card-header d-flex align-items-center">
-        <img
-          src={feedback.img}
-          alt=""
-          className="img-fluid text-center mx-3"
-          width="80"
-        />
-        <div>
+    <div className="col-md-4 text-center my-5">
+      <div className="card d-flex align-items-center shadow">
+      <img  src={feedback.img} alt="" className="img-fluid pt-2" width="20%" />
+      <div>
           <h4>{feedback.name}</h4>
           <p>{feedback.designation}</p>
         </div>
+
+   <div className="card-body">
+    <p className="text-secondary" >{feedback.description}</p>
+  
+   </div>
       </div>
-      <div className="card-body">
-        <p className="card-description">{feedback.description}</p>
-      </div>
-    </div>
+    
+  </div>
+
   );
 };
 
