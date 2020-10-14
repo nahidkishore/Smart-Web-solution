@@ -1,23 +1,43 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 const AddServiceForm = () => {
   
-
-  const [info, setInfo] = useState({});
+ const history=useHistory();
+  const [addService, setAddService] = useState({});
   const [file, setFile] = useState(null);
 
   const handleBlur = (e) => {
-    const newInfo = { ...info };
-    newInfo[e.target.name] = e.target.value;
-    setInfo(newInfo);
+    const newAddService = { ...addService };
+    newAddService[e.target.name] = e.target.value;
+    setAddService(newAddService);
   };
 
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
   };
-  const handleSubmit=()=> {
-    console.log('test')
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("title", addService.title);
+    formData.append("description", addService.description);
+
+    fetch("http://localhost:5000/addAService", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert('service added successfully')
+        history.push('/')
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <section className="col-md-10" style={{background: '#E5E5E5', borderRadius:'15px'}}>
       
@@ -30,7 +50,7 @@ const AddServiceForm = () => {
               onBlur={handleBlur}
               type="text"
               className="form-control"
-              name="name"
+              name="title"
               placeholder="Enter Title"
             />
           </div >

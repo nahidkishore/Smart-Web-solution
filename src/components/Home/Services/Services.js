@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import web from '../../../images/icons/service1.png'
 import graphic from '../../../images/icons/service2.png';
 import development from '../../../images/icons/service3.png';
 import ServiceDetail from './ServiceDetail';
-const serviceData=[
+/* const serviceData=[
   {
     id:1,
     title: 'Web & Mobile design',
@@ -22,8 +22,16 @@ const serviceData=[
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptates odit incidunt, aliquid rem eius!',
     img:development
   },
-]
+] */
 const Services = () => {
+  const [services,setServices] =useState([])
+  useEffect(()=>{
+    fetch('http://localhost:5000/services')
+    .then(res=>res.json())
+    .then(data=>setServices(data))
+
+  },[services])
+  
 
   return (
     <section className="service mt-5">
@@ -31,7 +39,7 @@ const Services = () => {
       <div className="d-flex justify-content-center">
         <div className="row w-75 mt-5 ">
 {
-  serviceData.map(service =><ServiceDetail service={service}></ServiceDetail>)
+  services.map(service =><ServiceDetail service={service} key={service._id}></ServiceDetail>)
 }
         </div>
       </div>

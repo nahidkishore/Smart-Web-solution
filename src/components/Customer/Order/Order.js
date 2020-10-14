@@ -5,8 +5,10 @@ import logo from "../../../images/logos/logo.png"
 const Order = () => {
   return (
     <section> 
-      <div className=" m-2"> 
-        <img src={logo} alt="" className="img-fluid" width="60%"/>
+      <div className=" m-2 row"> 
+      <div className="col-md-4">
+      <img src={logo} alt="" className="img-fluid" width="60%"/>
+      </div>
       </div>
       <div className="container-fluid row ml-5 mt-5">
         <div className="col-md-4">
