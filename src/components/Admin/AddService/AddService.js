@@ -2,47 +2,45 @@ import React, { useContext, useState } from 'react';
 import Sidebar from '../../Shared/Sidebar/Sidebar';
 import logo from '../../../images/logos/logo.png'
 
-import { UserContext } from '../../../App';
-import { useHistory } from 'react-router-dom';
 const AddService = () => {
- /*  const [loggedInUser, setLoggedInUser] = useContext(UserContext); */
 
-  const history=useHistory();
-  const [addService, setAddService] = useState({});
-  const [file, setFile] = useState(null);
+ const [addService, setAddService] = useState(null)
+ const [file, setFile] = useState(null)
 
-  const handleBlur = (e) => {
-    const newAddService = { ...addService };
-    newAddService[e.target.name] = e.target.value;
-    setAddService(newAddService);
-  };
 
-  const handleFileChange = (e) => {
-    const newFile = e.target.files[0];
-    setFile(newFile);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleBlur = e => {
+     const newService = { ...addService }
+     newService[e.target.name] = e.target.value
+     setAddService(newService)
+ }
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("title", addService.title);
-    formData.append("description", addService.description);
+ const handleFileChange = e => {
+     const newFile = e.target.files[0]
+     setFile(newFile)
+ }
 
-    fetch("http://localhost:5000/addAService", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        alert('service added successfully')
-        history.push('/')
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+ const handleSubmit = (e) => {
+   
+
+     const formData = new FormData()
+     formData.append('file', file);
+     formData.append('title', addService.title);
+     formData.append('description', addService.description);
+
+     fetch('http://localhost:5000/addServices', {
+         method: 'POST',
+         body: formData
+     })
+         .then(response => response.json())
+         .then(data => {
+             /* alert('Service Added Successfully')
+             history.push('/') */
+            console.log(data)
+         })
+         .catch(error => {
+             console.error(error)
+         })
+ }
   
   return (
     <section> 
@@ -74,11 +72,12 @@ const AddService = () => {
             className="form-control"
             name="title"
             placeholder="Enter Title"
+            required
           />
         </div >
         <div className="form-group col-md-3 col-sm-12 col-12">
         <label htmlFor="exampleInputFile">Icon</label>
-        <input  onChange={handleFileChange} type="file"  className="form-control" placeholder="Upload image"/>
+        <input  onChange={handleFileChange} type="file"  className="form-control" placeholder="Upload image" required/>
         </div>
       </div>
        
@@ -92,10 +91,11 @@ const AddService = () => {
             placeholder="Enter description"
             cols="30"
             rows="10"
+            required
           />
         </div>
     
-        <button type="submit" className="btn btn-success my-2">
+        <button type="submit" className="btn btn-success d-flex justify-content-end align-items-end">
           Submit
         </button>
       </form>

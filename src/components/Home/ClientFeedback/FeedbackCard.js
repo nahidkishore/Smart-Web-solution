@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../../App";
 import "./ClientFeedback.css";
 
 const FeedbackCard = ({ feedback }) => {
+ 
   return (
     <div className="col-md-4 text-center my-5">
       <div className="card d-flex align-items-center shadow">
