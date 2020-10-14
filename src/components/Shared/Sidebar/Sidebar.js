@@ -31,7 +31,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard/order" className="text-white">
+          <Link to="/order:id" className="text-white">
             <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
             <span>Order</span>
           </Link>
