@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-import logo from "../../../images/logos/logo.png";
+
 
 const AddService = () => {
   const [addService, setAddService] = useState(null);
@@ -42,7 +42,8 @@ const AddService = () => {
     <section>
       <div className=" m-2 row">
         <div className="col-md-4">
-          <img src={logo} alt="" className="img-fluid" width="60%" />
+          
+          <img src="https://iili.io/3Hsc3N.png" alt="" className="img-fluid" width="60%" />
         </div>
         <div className="col-md-4 d-flex justify-content-start">
           <h1>Add Service</h1>

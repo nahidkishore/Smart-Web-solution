@@ -27,10 +27,15 @@ const Sidebar = () => {
       .then((data) => setIsAdmin(data));
   }, []);
   return (
-    <div
+    <section>
+      <div className="row">
+      <h2 className="ml-2 text-brand">welcome to {loggedInUser.name}</h2>
+      </div>
+ <div
       className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4"
       style={{ height: "100vh" }}
     >
+     
       <ul className="list-unstyled">
         <li>
           <Link to="/" className="text-white">
@@ -92,6 +97,8 @@ const Sidebar = () => {
         </li>
       </ul>
     </div>
+    </section>
+   
   );
 };
 

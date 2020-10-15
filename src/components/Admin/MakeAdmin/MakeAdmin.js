@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-import logo from "../../../images/logos/logo.png";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../App";
+
+
 const MakeAdmin = () => {
+
   const { register, handleSubmit, watch, errors } = useForm();
+
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
   const [admin, setAdmin] = useState(null);
 
   const handleChange = (e) => {
@@ -13,6 +17,7 @@ const MakeAdmin = () => {
   };
 
   const onSubmit = (data) => {
+    
     fetch("https://secure-fortress-41944.herokuapp.com/addAdmin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -34,7 +39,12 @@ const MakeAdmin = () => {
     <section>
       <div className=" m-2 row">
         <div className="col-md-4">
-          <img src={logo} alt="" className="img-fluid" width="60%" />
+          <img
+            src="https://iili.io/3Hsc3N.png"
+            alt=""
+            className="img-fluid"
+            width="60%"
+          />
         </div>
       </div>
       <div className="container-fluid row ml-5 mt-5">

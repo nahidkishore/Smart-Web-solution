@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../../App";
-import logo from "../../../images/logos/logo.png";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
 
 const Review = () => {
@@ -17,7 +16,6 @@ const Review = () => {
     };
     newReview[e.target.name] = e.target.value;
     setReviews(newReview);
-    /* setReviews({ ...reviews, [e.target.name]: e.target.value, name: loggedInUser.name, img: loggedInUser.photoURL }) */
   };
 
   const handleSubmit = (e) => {
@@ -43,7 +41,7 @@ const Review = () => {
     <section>
       <div className=" m-2 row">
         <div className="col-md-4">
-          <img src={logo} alt="" className="img-fluid" width="60%" />
+          <img src="https://iili.io/3Hsc3N.png" alt="" className="img-fluid" width="60%" />
         </div>
         <div className="col-md-4 d-flex justify-content-start">
           <h1>Review Form</h1>
