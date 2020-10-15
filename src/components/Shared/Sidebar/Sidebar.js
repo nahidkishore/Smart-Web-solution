@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   faCog,
@@ -20,6 +20,17 @@ import { UserContext } from "../../../App";
 
 const Sidebar = () => {
 const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+const [isAdmin, setIsAdmin] = useState(false);
+
+useEffect(() => {
+  fetch("http://localhost:5000/isAdmin", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ email: loggedInUser.email }),
+  })
+    .then((res) => res.json())
+    .then((data) => setIsAdmin(data));
+}, []);
   return (
     <div
       className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4"
@@ -32,6 +43,7 @@ const [loggedInUser, setLoggedInUser] = useContext(UserContext);
             <FontAwesomeIcon icon={faHome} /> <span>Home</span>
           </Link>
         </li>
+      
         <li>
           <Link to="dashboard/order/:serviceName" className="text-white">
             <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
@@ -45,19 +57,25 @@ const [loggedInUser, setLoggedInUser] = useContext(UserContext);
                 <span>Order Review</span>
               </Link>
             </li>
-        
-            <li>
-              <Link to="/dashboard/serviceList" className="text-white">
-                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
-                <span>Service List</span>
-              </Link>
-            </li>
+
+
             <li>
               <Link to="/dashboard/reviews" className="text-white">
                 <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
                 <span>Review</span>
               </Link>
             </li>
+
+            {
+          isAdmin && <div>
+
+<li>
+              <Link to="/dashboard/serviceList" className="text-white">
+                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
+                <span>Service List</span>
+              </Link>
+            </li>
+          
             <li>
               <Link to="/dashboard/addService" className="text-white">
                 <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
@@ -70,13 +88,11 @@ const [loggedInUser, setLoggedInUser] = useContext(UserContext);
                 <span>Make Admin</span>
               </Link>
             </li>
-         
-            <li>
-              <Link to="/doctors/settings" className="text-white">
-                <FontAwesomeIcon icon={faCog}></FontAwesomeIcon>
-                <span>Settings</span>
-              </Link>
-            </li>
+
+          </div>
+        }
+
+           
           
       
       </ul>

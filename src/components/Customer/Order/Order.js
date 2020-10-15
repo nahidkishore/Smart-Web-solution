@@ -20,7 +20,7 @@ const Order = () => {
     formData.append("file", file);
     formData.append("name", data.name);
     formData.append("email", data.email);
-    formData.append("service", data.service);
+    formData.append("title", data.title);
     formData.append("details", data.details);
     formData.append("price", data.price);
     fetch("http://localhost:5000/addOrder", {
@@ -30,18 +30,20 @@ const Order = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result) {
-          alert("Data added successfully");
-          fieldReset();
+          alert("Order data added successfully");
+          Reset();
         }
       })
       .catch((error) => {
         console.error(error);
       });
   };
-  const fieldReset = () => {
+  console.log(onSubmit);
+  
+  const Reset = () => {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
-    document.getElementById("service").value = "";
+    document.getElementById("title").value = "";
     document.getElementById("details").value = "";
     document.getElementById("price").value = "";
     document.getElementById("file").value = "";
@@ -91,11 +93,11 @@ const Order = () => {
                 <div class="form-group">
                   <input
                     className="form-control"
-                    name="service"
-                    id="service"
+                    name="title"
+                    id="title"
                     defaultValue={serviceName}
                     ref={register({ required: true })}
-                    placeholder="service"
+                    placeholder="title"
                     
                   />
                   {errors.name && (
