@@ -47,8 +47,8 @@ const MakeAdmin = () => {
               <div class="form-group">
                 <input
                   className="form-control"
-                  name="name"
-                  id="name"
+                  name="email"
+                  id="email"
                   ref={register({ required: true })}
                   placeholder="nahid@gmail.com"
                   onChange={handleChange}

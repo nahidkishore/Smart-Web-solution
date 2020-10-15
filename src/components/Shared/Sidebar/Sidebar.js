@@ -38,28 +38,30 @@ const Sidebar = () => {
           </Link>
         </li>
 
-        <li>
-          <Link to="dashboard/order/:serviceName" className="text-white">
-            <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
-            <span>Order</span>
-          </Link>
-        </li>
+        {!isAdmin ? (
+          <div>
+            <li>
+              <Link to="dashboard/order/:serviceName" className="text-white">
+                <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
+                <span>Order</span>
+              </Link>
+            </li>
 
-        <li>
-          <Link to="/dashboard/orderedList" className="text-white">
-            <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
-            <span>Order Review</span>
-          </Link>
-        </li>
+            <li>
+              <Link to="/dashboard/orderedList" className="text-white">
+                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
+                <span>Order Review</span>
+              </Link>
+            </li>
 
-        <li>
-          <Link to="/dashboard/reviews" className="text-white">
-            <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
-            <span>Review</span>
-          </Link>
-        </li>
-
-        {isAdmin && (
+            <li>
+              <Link to="/dashboard/reviews" className="text-white">
+                <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
+                <span>Review</span>
+              </Link>
+            </li>
+          </div>
+        ) : (
           <div>
             <li>
               <Link to="/dashboard/serviceList" className="text-white">
@@ -82,12 +84,13 @@ const Sidebar = () => {
             </li>
           </div>
         )}
+
+        <li>
+          <Link to="/" className="text-white">
+            <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
+          </Link>
+        </li>
       </ul>
-      <div>
-        <Link to="/" className="text-white">
-          <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
-        </Link>
-      </div>
     </div>
   );
 };
