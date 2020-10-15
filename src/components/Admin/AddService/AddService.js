@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-
 
 const AddService = () => {
   const [addService, setAddService] = useState(null);
   const [file, setFile] = useState(null);
-
+  const history = useHistory();
   const handleBlur = (e) => {
     const newService = { ...addService };
     newService[e.target.name] = e.target.value;
@@ -29,8 +29,11 @@ const AddService = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        /* alert('Service Added Successfully')
-             history.push('/') */
+        if(data){
+          alert("Service Added Successfully");
+          history.push("/");
+        }
+     
         console.log(data);
       })
       .catch((error) => {
@@ -42,8 +45,12 @@ const AddService = () => {
     <section>
       <div className=" m-2 row">
         <div className="col-md-4">
-          
-          <img src="https://iili.io/3Hsc3N.png" alt="" className="img-fluid" width="60%" />
+          <img
+            src="https://iili.io/3Hsc3N.png"
+            alt=""
+            className="img-fluid"
+            width="60%"
+          />
         </div>
         <div className="col-md-4 d-flex justify-content-start">
           <h1>Add Service</h1>
