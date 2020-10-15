@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   faCog,
@@ -15,15 +15,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import "./Sidebar.css";
+import { UserContext } from "../../../App";
 
 
 const Sidebar = () => {
-
+const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   return (
     <div
       className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4"
       style={{ height: "100vh" }}
     >
+      <p>{loggedInUser.name}</p>
       <ul className="list-unstyled">
       <li>
           <Link to="/" className="text-white">
@@ -31,13 +33,18 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/order:id" className="text-white">
+          <Link to="dashboard/order/:serviceName" className="text-white">
             <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
             <span>Order</span>
           </Link>
         </li>
         
-       
+        <li>
+              <Link to="/dashboard/orderedList" className="text-white">
+                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
+                <span>Order Review</span>
+              </Link>
+            </li>
         
             <li>
               <Link to="/dashboard/serviceList" className="text-white">
