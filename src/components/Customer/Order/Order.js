@@ -23,7 +23,7 @@ const Order = () => {
     formData.append("title", data.title);
     formData.append("details", data.details);
     formData.append("price", data.price);
-    fetch("http://localhost:5000/addOrder", {
+    fetch("https://secure-fortress-41944.herokuapp.com/addOrder", {
       method: "POST",
       body: formData,
     })
@@ -39,7 +39,7 @@ const Order = () => {
       });
   };
   console.log(onSubmit);
-  
+
   const Reset = () => {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
@@ -98,7 +98,6 @@ const Order = () => {
                     defaultValue={serviceName}
                     ref={register({ required: true })}
                     placeholder="title"
-                    
                   />
                   {errors.name && (
                     <span className="error">Service is required</span>

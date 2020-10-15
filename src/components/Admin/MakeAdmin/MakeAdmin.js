@@ -6,19 +6,17 @@ import { UserContext } from "../../../App";
 const MakeAdmin = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-const [admin,setAdmin]=useState(null);
+  const [admin, setAdmin] = useState(null);
 
-
-const handleChange = (e) => {
-  setAdmin({ [e.target.name]: e.target.value });
-};
+  const handleChange = (e) => {
+    setAdmin({ [e.target.name]: e.target.value });
+  };
 
   const onSubmit = (data) => {
- 
-    fetch("http://localhost:5000/addAdmin", {
+    fetch("https://secure-fortress-41944.herokuapp.com/addAdmin", {
       method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(admin)
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(admin),
     })
       .then((response) => response.json())
       .then((result) => {
@@ -53,7 +51,7 @@ const handleChange = (e) => {
                   id="name"
                   ref={register({ required: true })}
                   placeholder="nahid@gmail.com"
-                  onChange={handleChange} 
+                  onChange={handleChange}
                 />
                 {errors.name && <span className="error">Name is required</span>}
                 <button className="btn btn-success">Submit</button>

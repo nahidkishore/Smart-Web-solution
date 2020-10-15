@@ -12,6 +12,10 @@ import NotFound from "./components/NotFound/NotFound";
 import OrderReview from "./components/Customer/OrderReview/OrderReview";
 import ServiceList from "./components/Admin/ServiceList/ServiceList";
 import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
+import Portfolio from "./components/Home/Portfolio/Portfolio";
+import OurTeam from "./components/Home/Home/OurTeam/OurTeam";
+import Sidebar from "./components/Shared/Sidebar/Sidebar";
+import ContactUs from "./components/Home/Home/ContatactUs/ContactUs";
 
 export const UserContext = createContext();
 
@@ -36,24 +40,44 @@ function App() {
           <PrivateRoute path="/dashboard/addService">
             <AddService></AddService>
           </PrivateRoute>
-          <PrivateRoute path="/dashboard/reviews">
+
+          <Route path="/dashboard/reviews">
             <Review></Review>
-          </PrivateRoute>
+          </Route>
+
           <PrivateRoute path="/dashboard/orderedList">
             <OrderReview></OrderReview>
           </PrivateRoute>
+
           <PrivateRoute path="/dashboard/serviceList">
             <ServiceList></ServiceList>
           </PrivateRoute>
+
           <PrivateRoute path="/dashboard/admin">
             <MakeAdmin></MakeAdmin>
           </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <Sidebar></Sidebar>
+          </PrivateRoute>
+
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/Portfolio">
+            <Portfolio></Portfolio>
+          </Route>
+
+          <Route path="/our-team">
+            <OurTeam></OurTeam>
+          </Route>
+          <Route path="/contact">
+            <ContactUs></ContactUs>
           </Route>
           <Route path="*">
             <NotFound></NotFound>
           </Route>
+          
+         
         </Switch>
       </Router>
     </UserContext.Provider>

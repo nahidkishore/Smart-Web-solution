@@ -41,7 +41,6 @@ const Footer = () => {
               </div>
               <div className="form-group text-center">
                 <button type="button" className="button">
-                 
                   Send
                 </button>
               </div>

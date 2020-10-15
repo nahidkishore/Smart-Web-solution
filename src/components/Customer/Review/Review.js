@@ -1,19 +1,19 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "../../../App";
 import logo from "../../../images/logos/logo.png";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-import ReviewForm from "./ReviewForm";
 
 const Review = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   const [reviews, setReviews] = useState({});
-
+  const history = useHistory();
   const handleChange = (e) => {
     const newReview = {
       ...reviews,
       name: loggedInUser.name,
-      img: loggedInUser.photoUrl,
+      img: loggedInUser.photoURL,
     };
     newReview[e.target.name] = e.target.value;
     setReviews(newReview);
@@ -27,13 +27,14 @@ const Review = () => {
       name: loggedInUser.name,
       img: loggedInUser.photoURL,
     });
-    fetch("http://localhost:5000/addFeedback", {
+    fetch("https://secure-fortress-41944.herokuapp.com/addFeedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reviews),
     }).then((success) => {
       if (success) {
         alert("Thank you for Your feedback");
+        history.push("/");
       }
       console.log(success);
     });
@@ -72,7 +73,7 @@ const Review = () => {
                 onChange={handleChange}
                 type="text"
                 className="form-control"
-                name="name"
+                name="Designation"
                 placeholder="Designation,Company's name "
               />
             </div>

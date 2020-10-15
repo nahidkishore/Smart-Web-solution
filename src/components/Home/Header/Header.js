@@ -1,16 +1,13 @@
-import React from 'react';
+import React from "react";
 
-
-import HeaderMain from '../HeaderMain/HeaderMain';
-import Navbar from '../Navbar/Navbar';
-import './Header.css'
+import HeaderMain from "../HeaderMain/HeaderMain";
+import Navbar from "../Navbar/Navbar";
+import "./Header.css";
 const Header = () => {
   return (
     <div className="header-container mb-5">
       <Navbar></Navbar>
       <HeaderMain></HeaderMain>
-      
-     
     </div>
   );
 };
