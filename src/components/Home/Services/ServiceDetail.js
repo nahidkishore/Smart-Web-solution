@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { UserContext } from "../../../App";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import "./Services.css";
 const ServiceDetail = ({ service }) => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  
   const history = useHistory();
 
   return (
