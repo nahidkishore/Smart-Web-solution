@@ -23,7 +23,7 @@ On the admin side, the admin accepts the client order and then the admin can als
 
 
 
-![s1](https://user-images.githubusercontent.com/39863835/97058172-df503300-15ae-11eb-8c0f-79cacbc45116.jpg)
+![s1](https://user-images.githubusercontent.com/39863835/97079508-46550280-1616-11eb-90a2-f3e1c47b804e.jpg)
 
 
 ![s2](https://user-images.githubusercontent.com/39863835/97079458-de062100-1615-11eb-869b-b2528af40332.jpg)
