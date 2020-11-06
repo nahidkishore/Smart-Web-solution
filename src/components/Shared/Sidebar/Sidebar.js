@@ -26,13 +26,15 @@ const Sidebar = () => {
       .then((res) => res.json())
       .then((data) => setIsAdmin(data));
   }, []);
+
   return (
     <section>
-      <div className="row">
-      <h2 className="ml-2 text-brand">welcome to {loggedInUser.name}</h2>
-      </div>
+      {/* <div className="row">
+       <h2 className="ml-2 text-brand">welcome to {loggedInUser.name}</h2> 
+    
+      </div> */}
  <div
-      className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4"
+      className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4 w-100"
       style={{ height: "100vh" }}
     >
      

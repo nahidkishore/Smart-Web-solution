@@ -24,6 +24,7 @@ const OrderReview = () => {
         <div className="col-md-4">
           <img src={logo} alt="" className="img-fluid" width="60%" />
         </div>
+  <h2>{loggedInUser.name}</h2>
       </div>
 
       <div className="container-fluid row ml-5 mt-5">

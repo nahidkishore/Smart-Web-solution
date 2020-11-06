@@ -1,13 +1,14 @@
 import React from "react";
 import frame from "../../../images/logos/Frame.png";
+
 const HeaderMain = () => {
   return (
-    <div className="container">
+    <section className="header-bg">
+      <div className="container layout">
       <div className="row d-flex align-items-center mb-5">
-        <div className="col-md-5 col-12 col-sm-12">
-          <div className="col-12 col-md-12 col-sm-6">
-            <h1>
-              Lets Grow Your <br /> Brand To The <br /> Next Level
+        <div className="col-md-5 col-12 col-sm-6">
+        <h1>
+              Lets Grow Your  Brand To The Next Level
             </h1>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
@@ -22,13 +23,13 @@ const HeaderMain = () => {
             >
               Hire Us
             </button>
-          </div>
         </div>
-        <div className="col-md-6 offset-1 ">
-          <img src={frame} alt="" className="img-fluid" />
+        <div className="col-md-7 col-sm-6">
+          <img src={frame} alt="" className="img-fluid w-100" />
         </div>
       </div>
     </div>
+    </section>
   );
 };
 
