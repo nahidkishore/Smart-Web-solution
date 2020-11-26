@@ -12,6 +12,7 @@ import {
 import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import "./Sidebar.css";
 import { UserContext } from "../../../App";
+import logo from "../../../images/logos/logo.png";
 
 const Sidebar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -29,78 +30,83 @@ const Sidebar = () => {
 
   return (
     <section>
-      {/* <div className="row">
-       <h2 className="ml-2 text-brand">welcome to {loggedInUser.name}</h2> 
-    
-      </div> */}
- <div
-      className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4 w-100"
-      style={{ height: "100vh" }}
-    >
-     
-      <ul className="list-unstyled">
-        <li>
-          <Link to="/" className="text-white">
-            <FontAwesomeIcon icon={faHome} /> <span>Home</span>
-          </Link>
-        </li>
-
-        {!isAdmin ? (
-          <div>
-            <li>
-              <Link to="dashboard/order/:serviceName" className="text-white">
-                <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
-                <span>Order</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/dashboard/orderedList" className="text-white">
-                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
-                <span>Order Review</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/dashboard/reviews" className="text-white">
-                <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
-                <span>Review</span>
-              </Link>
-            </li>
+      <div
+        className="sidebar"
+        /* style={{ height: "100vh" }} */
+      >
+        <div className="m-3 ml-3">
+          <div className="mb-3 mt-3">
+            <Link to="/">
+              <img
+                src={logo}
+                alt=""
+                style={{ width: "150px", height: "47px" }}
+              />
+            </Link>
           </div>
-        ) : (
-          <div>
+          <ul className="list-unstyled">
             <li>
-              <Link to="/dashboard/serviceList" className="text-white">
-                <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
-                <span>Service List</span>
+              <Link to="/" className="nav-link">
+                <FontAwesomeIcon icon={faHome} /> <span>Home</span>
               </Link>
             </li>
 
-            <li>
-              <Link to="/dashboard/addService" className="text-white">
-                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
-                <span>Add Service</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/admin" className="text-white">
-                <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
-                <span>Make Admin</span>
-              </Link>
-            </li>
-          </div>
-        )}
+            {!isAdmin ? (
+              <div>
+                <li>
+                  <Link to="dashboard/order/:serviceName" className="nav-link">
+                    <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
+                    Order
+                  </Link>
+                </li>
 
-        <li>
-          <Link to="/" className="text-white">
-            <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
-          </Link>
-        </li>
-      </ul>
-    </div>
+                <li>
+                  <Link to="/dashboard/orderedList" className="nav-link">
+                    <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
+                    <span>Order Review</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/dashboard/reviews" className="nav-link">
+                    <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
+                    <span>Review</span>
+                  </Link>
+                </li>
+              </div>
+            ) : (
+              <div>
+                <li>
+                  <Link to="/dashboard/serviceList" className="nav-link">
+                    <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
+                    <span>Service List</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/dashboard/addService" className="nav-link">
+                    <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+                    <span>Add Service</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/admin" className="nav-link">
+                    <FontAwesomeIcon icon={faUserPlus}></FontAwesomeIcon>
+                    <span>Make Admin</span>
+                  </Link>
+                </li>
+              </div>
+            )}
+
+            <li>
+              <Link to="/" className="nav-link">
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
-   
   );
 };
 

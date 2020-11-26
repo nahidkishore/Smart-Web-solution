@@ -1,7 +1,3 @@
-.sidebar{
-  background-image: linear-gradient(40deg, #19d3ae,#0fcfec);
-  position: fixed;
-}
 .sidebar li{
   margin-bottom: 2em;
 }
