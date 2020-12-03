@@ -7,11 +7,11 @@ import { CircularProgress } from "@material-ui/core";
 const OrderReview = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [orderedList, setOrderedList] = useState([]);
+  //const user = JSON.parse(sessionStorage.getItem('user'))
 
   useEffect(() => {
     fetch(
-      "https://secure-fortress-41944.herokuapp.com/orderedList?email=" +
-        loggedInUser.email
+      `https://secure-fortress-41944.herokuapp.com/orderedList?email=${loggedInUser.email}`
     )
       .then((response) => response.json())
       .then((data) => setOrderedList(data))
@@ -41,7 +41,10 @@ const OrderReview = () => {
 
                 {orderedList.map((list) => (
                   <div className="col-md-4 text-center my-5">
-                    <div className="card d-flex align-items-center shadow">
+                    <div
+                      key={list._id}
+                      className="card d-flex align-items-center shadow"
+                    >
                       <div className="d-flex justify-content-between">
                         <img
                           className="mx-3 rounded-circle"
@@ -49,9 +52,9 @@ const OrderReview = () => {
                           src={`data:image/png;base64,${list.image.img}`}
                           alt="img"
                         />
-                        <button className="btn btn-danger btn-sm">
-                          Pending
-                        </button>
+                        <p className={`serviceStatus-${list.status} rounded `}>
+                          <button className="btn btn-success">{list.status}</button>
+                        </p>
                       </div>
                       <div className="card-body">
                         <h5 className="mt-3 mb-3">{list.service}</h5>

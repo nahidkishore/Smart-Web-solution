@@ -1,39 +1,53 @@
 import React from "react";
+import { Dropdown, SplitButton } from "react-bootstrap";
+const ServiceListTable = ({ services }) => {
+  const { name, email, title, details, status, _id } = services;
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  const handleStatusChange = (value, id) => {
+    fetch(`https://secure-fortress-41944.herokuapp.com/updateStatus/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ value }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          window.location.reload();
+        }
+      });
+  };
 
-const ServiceListTable = ({ serviceList }) => {
   return (
-    <table className="table table-borderless table-hover">
-      <thead>
-        <tr>
-          <th className="text-secondary text-left" scope="col">
-            Sr No
-          </th>
-          <th className="text-secondary" scope="col">
-            Name
-          </th>
-          <th className="text-secondary" scope="col">
-            Email ID
-          </th>
-          <th className="text-secondary" scope="col">
-            service
-          </th>
-          <th className="text-secondary" scope="col">
-            Project Details
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {serviceList.map((list, index) => (
-          <tr>
-            <td>{index + 1}</td>
-            <td>{list.name}</td>
-            <td>{list.email}</td>
-            <td>{list.title}</td>
-            <td>{list.details}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <tr>
+      <td>{name}</td>
+      <td>{email}</td>
+      <td>{title}</td>
+      <td>{details}</td>
+      <td>
+        <SplitButton className={`statusButton-${status}`} title={status}>
+          <Dropdown.Item
+            className="pending-dropdownItem"
+            onClick={() => handleStatusChange("pending", _id)}
+          >
+            Pending
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="ongoing-dropdownItem"
+            onClick={() => handleStatusChange("ongoing", _id)}
+          >
+            Ongoing
+          </Dropdown.Item>
+          <Dropdown.Item
+            className="done-dropdownItem"
+            onClick={() => handleStatusChange("done", _id)}
+          >
+            Done
+          </Dropdown.Item>
+        </SplitButton>
+      </td>
+    </tr>
+
+    
   );
 };
 

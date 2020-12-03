@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   faSignOutAlt,
   faUserPlus,
@@ -28,6 +28,15 @@ const Sidebar = () => {
       .then((data) => setIsAdmin(data));
   }, []);
 
+  //Logout users
+
+  const history = useHistory();
+  const handleLogout = () => {
+    setLoggedInUser({ user: null });
+    sessionStorage.removeItem("token");
+    history.replace("/");
+  };
+
   return (
     <section>
       <div
@@ -46,7 +55,7 @@ const Sidebar = () => {
           </div>
           <ul className="list-unstyled">
             <li>
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link text-link">
                 <FontAwesomeIcon icon={faHome} /> <span>Home</span>
               </Link>
             </li>
@@ -54,24 +63,35 @@ const Sidebar = () => {
             {!isAdmin ? (
               <div>
                 <li>
-                  <Link to="dashboard/order/:serviceName" className="nav-link">
+                  <Link
+                    to="dashboard/order/:serviceName"
+                    className="nav-link text-link"
+                  >
                     <FontAwesomeIcon icon={faCartPlus}></FontAwesomeIcon>
                     Order
                   </Link>
                 </li>
 
                 <li>
-                  <Link to="/dashboard/orderedList" className="nav-link">
+                  <Link
+                    to="/dashboard/orderedList"
+                    className="nav-link  text-link"
+                  >
                     <FontAwesomeIcon icon={faList}></FontAwesomeIcon>
                     <span>Order Review</span>
                   </Link>
                 </li>
 
                 <li>
-                  <Link to="/dashboard/reviews" className="nav-link">
-                    <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
-                    <span>Review</span>
-                  </Link>
+                  <div>
+                    <Link
+                      to="/dashboard/reviews"
+                      className="nav-link text-link"
+                    >
+                      <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
+                      <span>Review</span>
+                    </Link>
+                  </div>
                 </li>
               </div>
             ) : (
@@ -99,10 +119,20 @@ const Sidebar = () => {
             )}
 
             <li>
+              <div
+                onClick={handleLogout}
+                className="nav-link"
+                style={{ cursor: "pointer" }}
+              >
+                <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
+              </div>
+            </li>
+
+            {/*      <li>
               <Link to="/" className="nav-link">
                 <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

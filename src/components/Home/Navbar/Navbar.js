@@ -1,6 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../../../App";
+import { handleSignOut } from "../../Login/LoginManager";
 const Navbar = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  let history = useHistory();
+
+  const handleLoggingButton = () => {
+    if (loggedInUser.name || loggedInUser.email) {
+      handleSignOut();
+      setLoggedInUser({});
+      history.push("/");
+    } else {
+      history.push("/login");
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light pt-5 ">
       <div className="container">
@@ -50,7 +65,7 @@ const Navbar = () => {
 
             <li className="nav-item mr-5">
               <Link className="nav-link mr-2" to="/dashboard">
-                <button className=" button ">Login</button>
+                <button onClick={handleLoggingButton} className=" button ">{loggedInUser.name || loggedInUser.email ? "Logout" : "Login"}</button>
               </Link>
             </li>
           </ul>

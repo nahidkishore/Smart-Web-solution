@@ -9,3 +9,8 @@
 .text-brand{
   color: #7AB259;
 }
+
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+}

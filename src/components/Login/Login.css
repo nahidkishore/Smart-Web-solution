@@ -1,13 +1,31 @@
-.login-button{
-  
-    border: 1px solid gray;
-    border-radius: 8px;
-    padding: 9px 10px;
-    cursor: pointer;
-    background-color: #72fa9b;
+.login-form {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #ababab;
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 570px;
+  /* height: 530px; */
+  height: auto;
+  margin-left: 350px;
+  margin-top: 30px;
 }
-.style{
-  border: 1px solid gray;
-  height: 300px;
-  width: 600px;
+
+.submit-btn {
+  background-image: linear-gradient(to bottom, #275a53 0%, #275a53 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.login-section {
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 2px 20px;
+  margin: 0 0 5px 0;
+  height: 35px;
 }
