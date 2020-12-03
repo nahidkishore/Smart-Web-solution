@@ -32,4 +32,4 @@ When a customer Clicking on any service will take you to the dashboard, before t
 
 
 ![s3](https://user-images.githubusercontent.com/39863835/100313110-1ebed480-2fde-11eb-9760-49b17c0f8d98.jpg)
-![s4](https://user-images.githubusercontent.com/39863835/100313113-1ff00180-2fde-11eb-8f9f-ee1c7dd7750a.jpg)
+![s5](https://user-images.githubusercontent.com/39863835/101070371-786a6480-35c5-11eb-9a9f-c763774e214e.jpg)
