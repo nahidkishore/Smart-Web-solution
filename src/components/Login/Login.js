@@ -32,6 +32,8 @@ const Login = () => {
   initializeLoginFramework();
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [pass, setPass] = useState();
+  const [confPass, setConfPass] = useState();
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -54,10 +56,14 @@ const Login = () => {
     });
   };
 
+  // auth provider
+
   const handleResponse = (res, redirect) => {
     setUser(res);
     setLoggedInUser(res);
+    history.replace(from);
     if (redirect) {
+      /*  history.push('/'); */
       history.replace(from);
     }
   };
@@ -70,9 +76,20 @@ const Login = () => {
       );
     }
     if (e.target.name === "password") {
+      setPass(e.target.value);
       const isPasswordValid = e.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
+      if (newUser) {
+        if (!isPasswordValid && !passwordHasNumber) {
+          alert("Please enter number and character type password");
+        }
+      }
+    }
+    if (newUser) {
+      if (e.target.name === "confirm") {
+        setConfPass(e.target.value);
+      }
     }
     if (isFieldValid) {
       const newUserInfo = { ...user };
@@ -81,20 +98,34 @@ const Login = () => {
     }
   };
   const handleSubmit = (e) => {
-    if (newUser && user.email && user.password) {
-      createUserWithEmailAndPassword(user.name, user.email, user.password).then(
-        (res) => {
-          handleResponse(res, true);
-        }
-      );
+    let pass_valid = false;
+    if (newUser) {
+      if (pass === confPass) {
+        pass_valid = true;
+      }
+    } else {
+      pass_valid = true;
     }
 
-    if (!newUser && user.email && user.password) {
-      signInWithEmailAndPassword(user.email, user.password).then((res) => {
-        handleResponse(res, true);
-      });
+    if (pass_valid) {
+      if (newUser && user.email && user.password) {
+        createUserWithEmailAndPassword(
+          user.name,
+          user.email,
+          user.password
+        ).then((res) => {
+          handleResponse(res, true);
+        });
+      }
+      if (!newUser && user.email && user.password) {
+        signInWithEmailAndPassword(user.email, user.password).then((res) => {
+          handleResponse(res, true);
+        });
+      }
+      e.preventDefault();
+    } else {
+      e.preventDefault();
     }
-    e.preventDefault();
   };
   return (
     <section>
@@ -216,11 +247,13 @@ const Login = () => {
             className="login-section"
           >
             <img
-              style={{ width: "30px", height: "30px", marginRight: "10px" }}
+              style={{ width: "40px", height: "40px", marginRight: "10px" }}
               src={google}
               alt=""
             />
-            <p>Continue with Google</p>
+            <p style={{ fontSize: "30px", fontWeight: "600" }}>
+              Continue with Google
+            </p>
           </div>
 
           <div
@@ -229,11 +262,13 @@ const Login = () => {
             className="login-section"
           >
             <img
-              style={{ width: "30px", height: "30px", marginRight: "10px" }}
+              style={{ width: "40px", height: "40px", marginRight: "10px" }}
               src={fb}
               alt=""
             />
-            <p>Continue with Facebook</p>
+            <p style={{ fontSize: "30px", fontWeight: "600" }}>
+              Continue with Facebook
+            </p>
           </div>
         </div>
       </div>

@@ -36,7 +36,7 @@ export const handleFbSignIn = () => {
       var token = result.credential.accessToken;
       var user = result.user;
       console.log("fb user after sign In ", user);
-      //user.success = true;
+      user.success = true;
       return user;
     })
     .catch(function (error) {
@@ -107,7 +107,7 @@ const updateUserName = (name) => {
       displayName: name,
     })
     .then(function () {
-      console.log("user name updated successfully");
+      alert("user name updated successfully");
     })
     .catch(function (error) {
       console.log(error);

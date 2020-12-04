@@ -65,7 +65,9 @@ const Navbar = () => {
 
             <li className="nav-item mr-5">
               <Link className="nav-link mr-2" to="/dashboard">
-                <button onClick={handleLoggingButton} className=" button ">{loggedInUser.name || loggedInUser.email ? "Logout" : "Login"}</button>
+                <button onClick={handleLoggingButton} className=" button ">
+                  {loggedInUser.name || loggedInUser.email ? "Logout" : "Login"}
+                </button>
               </Link>
             </li>
           </ul>
