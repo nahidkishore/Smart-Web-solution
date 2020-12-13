@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../../App";
 import Sidebar from "../../Shared/Sidebar/Sidebar";
-
+import './Review.css'
 const Review = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
@@ -38,7 +38,69 @@ const Review = () => {
     });
   };
   return (
+
+
+
     <section>
+      <div className="row">
+        <div className="col-md-3">
+          <Sidebar></Sidebar>
+        </div>
+        <div className="col-md-9">
+          <div className="row">
+          <div className="col-md-7 mb-5 ml-5 mt-3">
+              <h4 style={{ fontWeight: "bold" }}> Review Form</h4>
+            </div>
+            <div className="col-md-4 mt-3">
+              <h5 style={{ fontWeight: "bolder" }}>{loggedInUser.name}</h5>
+            </div>
+          </div>
+          <div className="order-form">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group col-md-5 col-sm-12 col-12">
+              <input
+                onChange={handleChange}
+                type="text"
+                className="form-control"
+                name="name"
+                placeholder="Your name"
+                value={loggedInUser.name}
+              />
+            </div>
+            <div className="form-group col-md-5 col-sm-12 col-12">
+              <input
+                onChange={handleChange}
+                type="text"
+                className="form-control"
+                name="Designation"
+                placeholder="Designation,Company's name "
+              />
+            </div>
+
+            <div className="form-group  col-md-5  col-sm-12 col-12">
+              <label htmlFor="exampleInputName">Description</label>
+              <textarea
+                onChange={handleChange}
+                type="text"
+                className="form-control"
+                name="description"
+                placeholder="Enter description"
+                cols="30"
+                rows="10"
+              />
+            </div>
+
+            <button type="submit" className="btn btn-success my-2">
+              Submit
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    /* <section>
       <div className=" m-2 row">
         <div className="col-md-4">
           <img src="https://iili.io/3Hsc3N.png" alt="" className="img-fluid" width="60%" />
@@ -95,7 +157,7 @@ const Review = () => {
           </form>
         </div>
       </div>
-    </section>
+    </section> */
   );
 };
 

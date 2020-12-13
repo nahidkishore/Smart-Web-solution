@@ -15,7 +15,7 @@ const Order = () => {
     const newFile = e.target.files[0];
     setFile(newFile);
   };
-
+const history = useHistory();
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -32,6 +32,8 @@ const Order = () => {
       .then((result) => {
         if (result) {
           alert("Order data added successfully");
+          
+          history.push("/dashboard/orderedList");
           Reset();
         }
       })

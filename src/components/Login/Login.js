@@ -32,8 +32,7 @@ const Login = () => {
   initializeLoginFramework();
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  const [pass, setPass] = useState();
-  const [confPass, setConfPass] = useState();
+
   const history = useHistory();
   const location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
@@ -71,26 +70,17 @@ const Login = () => {
   const handleBlur = (e) => {
     let isFieldValid = true;
     if (e.target.name === "email") {
-      isFieldValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        e.target.value
-      );
+      isFieldValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(e.target.value);
     }
+
     if (e.target.name === "password") {
-      setPass(e.target.value);
+    
       const isPasswordValid = e.target.value.length > 6;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
-      if (newUser) {
-        if (!isPasswordValid && !passwordHasNumber) {
-          alert("Please enter number and character type password");
-        }
-      }
+  
     }
-    if (newUser) {
-      if (e.target.name === "confirm") {
-        setConfPass(e.target.value);
-      }
-    }
+   
     if (isFieldValid) {
       const newUserInfo = { ...user };
       newUserInfo[e.target.name] = e.target.value;
@@ -98,16 +88,6 @@ const Login = () => {
     }
   };
   const handleSubmit = (e) => {
-    let pass_valid = false;
-    if (newUser) {
-      if (pass === confPass) {
-        pass_valid = true;
-      }
-    } else {
-      pass_valid = true;
-    }
-
-    if (pass_valid) {
       if (newUser && user.email && user.password) {
         createUserWithEmailAndPassword(
           user.name,
@@ -123,9 +103,8 @@ const Login = () => {
         });
       }
       e.preventDefault();
-    } else {
-      e.preventDefault();
-    }
+    
+    
   };
   return (
     <section>

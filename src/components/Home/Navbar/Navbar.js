@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
-import { handleSignOut } from "../../Login/LoginManager";
+//import { handleSignOut } from "../../Login/LoginManager";
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  let history = useHistory();
+  //let history = useHistory();
 
-  const handleLoggingButton = () => {
+  /*   const handleLoggingButton = () => {
     if (loggedInUser.name || loggedInUser.email) {
       handleSignOut();
       setLoggedInUser({});
@@ -14,7 +14,7 @@ const Navbar = () => {
     } else {
       history.push("/login");
     }
-  };
+  }; */
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light pt-5 ">
@@ -62,13 +62,22 @@ const Navbar = () => {
                 Contact Us
               </Link>
             </li>
-
             <li className="nav-item mr-5">
-              <Link className="nav-link mr-2" to="/dashboard">
-                <button onClick={handleLoggingButton} className=" button ">
-                  {loggedInUser.name || loggedInUser.email ? "Logout" : "Login"}
-                </button>
-              </Link>
+              {loggedInUser.name || loggedInUser.email ? (
+                <Link
+                  to="/dashboard"
+                  style={{ fontWeight: "bold", color: "black" }}
+                  className="nav-link mr-2"
+                >
+                  <span> Dashboard</span>
+                </Link>
+              ) : (
+                <Link to="/login" className="nav-link mr-2">
+                  <button style={{ padding: "8px 25px" }} className=" button ">
+                    Login
+                  </button>
+                </Link>
+              )}
             </li>
           </ul>
         </div>
